@@ -9,7 +9,7 @@ import time
 import serial
 from server_serial import SimSerial
 import socket
-from random import randint
+
 
 
 
