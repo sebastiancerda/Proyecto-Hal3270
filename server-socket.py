@@ -32,7 +32,7 @@ import sys
 from random import randint
 from thread import *
 from termcolor import colored
- 
+import time
 HOST = ''   # Nombre simbolico localhost
 PORT = 8888 # puerto arbitrario
  
@@ -51,10 +51,13 @@ print 'Enlace creado'
 #Iniciar escucha del server
 s.listen(10)
 print 'Socket escuchando puerto'
+data = ''
+
 
 #Funcion para manejar las conecciones. Maneja la tarea
 def clientthread(conn):
     #Manda un mensaje al cliente conectado.
+    global data, dato_anterior
     conn.send('Bienvenido al sebiserver,mande un mensaje y luego return \n') #send only takes string
     dato_anterior = ''
     #Loop infinito que no termina hasta que data es vacio.

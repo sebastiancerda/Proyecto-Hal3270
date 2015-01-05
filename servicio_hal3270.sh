@@ -1,19 +1,19 @@
 #!/bin/sh
 
 ### BEGIN INIT INFO
-# Provides:          myservice
+# Provides:          Servicio HAL_3270
 # Required-Start:    $remote_fs $syslog
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Put a short description of the service here
+# Short-Description: Servicio Adquisidor de tramas
 # Description:       Put a long description of the service here
 ### END INIT INFO
 
 # Change the next 3 lines to suit where you install your script and what you want to call it
 DIR=/usr/local/bin/pruebas_integracion
 DAEMON=$DIR/pruebas_simples.py
-DAEMON_NAME=pruebas_simples
+DAEMON_NAME=Servicio_Hal_3270
 
 # Add any command line options for your daemon here
 DAEMON_OPTS=""
@@ -28,12 +28,12 @@ PIDFILE=/var/run/$DAEMON_NAME.pid
 . /lib/lsb/init-functions
 
 do_start () {
-    log_daemon_msg "Starting system $DAEMON_NAME daemon"
+    log_daemon_msg "Iniciando el servicio $DAEMON_NAME como demonio"
     start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USER --startas $DAEMON -- $DAEMON_OPTS
     log_end_msg $?
 }
 do_stop () {
-    log_daemon_msg "Stopping system $DAEMON_NAME daemon"
+    log_daemon_msg "Deteniendo el servicio $DAEMON_NAME daemon"
     start-stop-daemon --stop --pidfile $PIDFILE --retry 10
     log_end_msg $?
 }
